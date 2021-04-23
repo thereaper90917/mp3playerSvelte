@@ -8,6 +8,17 @@ html, body {
   background-size: cover;
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+  background:rgb(20, 19, 19);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: red;    /* color of the scroll thumb */
+  /* border-radius: 20px;       roundness of the scroll thumb */
+  border: 100px solid rgb(20, 19, 19);
+}
+
 .button{
   background-color: transparent !important;
   border-color:transparent;
