@@ -7,7 +7,7 @@
 let current = 0
 let src
 let songSrc = []
-
+let playingSong = false
 
 function formatTime(secs) {
     var minutes = Math.floor(secs / 60) || 0;
@@ -85,6 +85,19 @@ function openDialog(){
   ipcRenderer.send("opendialog")
 }
 
+function toggleSong(){
+  playingSong = !playingSong
+  if (playingSong){
+    sound.play()
+  } else {
+    sound.pause()
+  }
+}
+
+function stopSong(){
+  sound.stop()
+}
+
 </script>
 
 
@@ -115,8 +128,13 @@ function openDialog(){
     <div>
       
       <div class=" border buttons is-align-content-center mt-2  "style="height: 100%; width:100%;" id="player">
-        <button class="button" on:click="{openDialog}"><i class="fas fa-play fa-2x"></i></button>
-        <button class="button" on:click="{test}"><i class="fas fa-stop fa-2x"></i></button>
+        <button class="button" on:click="{openDialog}">OPEN</button>
+        <button class="button" on:click="{toggleSong}">
+          {#if playingSong}<i class="fas fa-play fa-2x"></i>{/if}
+          {#if !playingSong}<i class="fas fa-pause fa-2x"></i>{/if}
+        </button>
+        <button class="button" on:click="{stopSong}"><i class="fas fa-stop fa-2x"></i></button>
+        <button class="button" on:click="{test}">TEST</button>
         <div style="height:20%; width:30%">
           <span class="has-text-white mr-1" id="test"></span>
           <span class="has-text-white" id="duration"></span>
