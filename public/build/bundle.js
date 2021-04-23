@@ -380,14 +380,14 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[10] = list[i];
+    	child_ctx[12] = list[i];
     	return child_ctx;
     }
 
-    // (70:8) {#if songSrc !== []}
+    // (103:8) {#if songSrc !== []}
     function create_if_block(ctx) {
     	let each_1_anchor;
-    	let each_value = /*songSrc*/ ctx[0];
+    	let each_value = /*songSrc*/ ctx[1];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -411,8 +411,8 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*songSrc, clickedSrc*/ 3) {
-    				each_value = /*songSrc*/ ctx[0];
+    			if (dirty & /*songSrc, clickedSrc*/ 6) {
+    				each_value = /*songSrc*/ ctx[1];
     				validate_each_argument(each_value);
     				let i;
 
@@ -445,19 +445,19 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(70:8) {#if songSrc !== []}",
+    		source: "(103:8) {#if songSrc !== []}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (71:10) {#each songSrc as source}
+    // (104:10) {#each songSrc as source}
     function create_each_block(ctx) {
     	let tr;
     	let td;
     	let a;
-    	let t0_value = /*source*/ ctx[10] + "";
+    	let t0_value = /*source*/ ctx[12] + "";
     	let t0;
     	let a_href_value;
     	let t1;
@@ -471,11 +471,11 @@ var app = (function () {
     			a = element("a");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(a, "href", a_href_value = /*source*/ ctx[10]);
+    			attr_dev(a, "href", a_href_value = /*source*/ ctx[12]);
     			attr_dev(a, "title", "");
-    			add_location(a, file, 73, 22, 1599);
-    			add_location(td, file, 73, 18, 1595);
-    			add_location(tr, file, 71, 14, 1526);
+    			add_location(a, file, 106, 22, 2646);
+    			add_location(td, file, 106, 18, 2642);
+    			add_location(tr, file, 104, 14, 2573);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -485,14 +485,14 @@ var app = (function () {
     			append_dev(td, t1);
 
     			if (!mounted) {
-    				dispose = listen_dev(a, "click", /*clickedSrc*/ ctx[1], false, false, false);
+    				dispose = listen_dev(a, "click", /*clickedSrc*/ ctx[2], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*songSrc*/ 1 && t0_value !== (t0_value = /*source*/ ctx[10] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*songSrc*/ 2 && t0_value !== (t0_value = /*source*/ ctx[12] + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*songSrc*/ 1 && a_href_value !== (a_href_value = /*source*/ ctx[10])) {
+    			if (dirty & /*songSrc*/ 2 && a_href_value !== (a_href_value = /*source*/ ctx[12])) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -507,7 +507,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(71:10) {#each songSrc as source}",
+    		source: "(104:10) {#each songSrc as source}",
     		ctx
     	});
 
@@ -524,13 +524,29 @@ var app = (function () {
     	let t1;
     	let tbody;
     	let t2;
-    	let div1;
+    	let div3;
+    	let div2;
     	let button0;
-    	let t4;
+    	let i0;
+    	let t3;
     	let button1;
+    	let i1;
+    	let t4;
+    	let div1;
+    	let span0;
+    	let t5;
+    	let span1;
+    	let t6;
+    	let progress;
+    	let t7;
+    	let i2;
+    	let label;
+    	let t8;
+    	let t9;
+    	let input;
     	let mounted;
     	let dispose;
-    	let if_block = /*songSrc*/ ctx[0] !== [] && create_if_block(ctx);
+    	let if_block = /*songSrc*/ ctx[1] !== [] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -545,36 +561,85 @@ var app = (function () {
     			tbody = element("tbody");
     			if (if_block) if_block.c();
     			t2 = space();
-    			div1 = element("div");
+    			div3 = element("div");
+    			div2 = element("div");
     			button0 = element("button");
-    			button0.textContent = "Play";
-    			t4 = space();
+    			i0 = element("i");
+    			t3 = space();
     			button1 = element("button");
-    			button1.textContent = "Stop";
-    			attr_dev(th, "class", "sticky");
-    			add_location(th, file, 65, 10, 1369);
-    			add_location(tr, file, 63, 8, 1302);
-    			add_location(thead, file, 62, 6, 1285);
-    			add_location(tbody, file, 68, 6, 1436);
-    			attr_dev(table, "class", "table is-fullwidth is-align-content-center is-justify-content-center ");
+    			i1 = element("i");
+    			t4 = space();
+    			div1 = element("div");
+    			span0 = element("span");
+    			t5 = space();
+    			span1 = element("span");
+    			t6 = space();
+    			progress = element("progress");
+    			t7 = space();
+    			i2 = element("i");
+    			label = element("label");
+    			t8 = text(/*current*/ ctx[0]);
+    			t9 = space();
+    			input = element("input");
+    			attr_dev(th, "class", "sticky has-text-white");
+    			add_location(th, file, 98, 10, 2401);
+    			add_location(tr, file, 96, 8, 2334);
+    			add_location(thead, file, 95, 6, 2317);
+    			add_location(tbody, file, 101, 6, 2483);
+    			attr_dev(table, "class", "table is-fullwidth is-align-content-center is-justify-content-center border");
+    			set_style(table, "height", "300px");
     			set_style(table, "width", "100%");
-    			add_location(table, file, 61, 4, 1172);
-    			attr_dev(div0, "class", "table-container table__wrapper");
+    			add_location(table, file, 94, 4, 2185);
+    			set_style(div0, "max-height", "200px");
+    			set_style(div0, "max-width", "100% ");
     			set_style(div0, "overflow-y", "scroll");
-    			set_style(div0, "height", "300px");
-    			add_location(div0, file, 60, 3, 1081);
-    			attr_dev(button0, "class", "button is-danger ");
-    			add_location(button0, file, 82, 8, 1922);
-    			attr_dev(button1, "class", "button is-link");
-    			add_location(button1, file, 83, 8, 2003);
-    			attr_dev(div1, "class", "buttons is-align-content-center is-justify-content-center is-justify-content-space-evenly ");
-    			set_style(div1, "height", "100%");
-    			set_style(div1, "width", "100%");
-    			add_location(div1, file, 81, 4, 1775);
+    			add_location(div0, file, 93, 2, 2111);
+    			attr_dev(i0, "class", "fas fa-play fa-2x");
+    			add_location(i0, file, 117, 55, 3006);
+    			attr_dev(button0, "class", "button");
+    			add_location(button0, file, 117, 8, 2959);
+    			attr_dev(i1, "class", "fas fa-stop fa-2x");
+    			add_location(i1, file, 118, 49, 3099);
+    			attr_dev(button1, "class", "button");
+    			add_location(button1, file, 118, 8, 3058);
+    			attr_dev(span0, "class", "has-text-white mr-1");
+    			attr_dev(span0, "id", "test");
+    			add_location(span0, file, 120, 10, 3198);
+    			attr_dev(span1, "class", "has-text-white");
+    			attr_dev(span1, "id", "duration");
+    			add_location(span1, file, 121, 10, 3261);
+    			set_style(div1, "height", "20%");
+    			set_style(div1, "width", "30%");
+    			add_location(div1, file, 119, 8, 3151);
+    			attr_dev(progress, "id", "progress");
+    			attr_dev(progress, "class", "progress is-danger");
+    			progress.value = "";
+    			attr_dev(progress, "max", "100");
+    			add_location(progress, file, 124, 8, 3346);
+    			attr_dev(label, "for", "text");
+    			attr_dev(label, "class", "has-text-white ml-2");
+    			add_location(label, file, 126, 47, 3486);
+    			attr_dev(i2, "class", "ml-2 fas fa-volume-up fa-2x");
+    			add_location(i2, file, 126, 8, 3447);
+    			attr_dev(input, "id", "volume");
+    			attr_dev(input, "class", "slider is-fullwidth is-medium is-danger is-circle");
+    			attr_dev(input, "step", "0.1");
+    			attr_dev(input, "min", "0");
+    			attr_dev(input, "max", "1");
+    			input.value = "10";
+    			attr_dev(input, "type", "range");
+    			attr_dev(input, "precision", "2");
+    			add_location(input, file, 129, 8, 3584);
+    			attr_dev(div2, "class", " border buttons is-align-content-center mt-2  ");
+    			set_style(div2, "height", "100%");
+    			set_style(div2, "width", "100%");
+    			attr_dev(div2, "id", "player");
+    			add_location(div2, file, 116, 6, 2844);
+    			add_location(div3, file, 114, 4, 2823);
     			attr_dev(section, "class", "section is-flex-direction-column ");
-    			set_style(section, "height", "40%");
+    			set_style(section, "height", "100%");
     			set_style(section, "width", "100%");
-    			add_location(section, file, 58, 0, 989);
+    			add_location(section, file, 92, 0, 2021);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -590,22 +655,39 @@ var app = (function () {
     			append_dev(table, tbody);
     			if (if_block) if_block.m(tbody, null);
     			append_dev(section, t2);
-    			append_dev(section, div1);
-    			append_dev(div1, button0);
-    			append_dev(div1, t4);
-    			append_dev(div1, button1);
+    			append_dev(section, div3);
+    			append_dev(div3, div2);
+    			append_dev(div2, button0);
+    			append_dev(button0, i0);
+    			append_dev(div2, t3);
+    			append_dev(div2, button1);
+    			append_dev(button1, i1);
+    			append_dev(div2, t4);
+    			append_dev(div2, div1);
+    			append_dev(div1, span0);
+    			append_dev(div1, t5);
+    			append_dev(div1, span1);
+    			append_dev(div2, t6);
+    			append_dev(div2, progress);
+    			append_dev(div2, t7);
+    			append_dev(div2, i2);
+    			append_dev(i2, label);
+    			append_dev(label, t8);
+    			append_dev(div2, t9);
+    			append_dev(div2, input);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*openDialog*/ ctx[3], false, false, false),
-    					listen_dev(button1, "click", /*test*/ ctx[2], false, false, false)
+    					listen_dev(button0, "click", /*openDialog*/ ctx[4], false, false, false),
+    					listen_dev(button1, "click", /*test*/ ctx[3], false, false, false),
+    					listen_dev(input, "change", /*change_handler*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*songSrc*/ ctx[0] !== []) {
+    			if (/*songSrc*/ ctx[1] !== []) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -617,6 +699,8 @@ var app = (function () {
     				if_block.d(1);
     				if_block = null;
     			}
+
+    			if (dirty & /*current*/ 1) set_data_dev(t8, /*current*/ ctx[0]);
     		},
     		i: noop,
     		o: noop,
@@ -639,6 +723,12 @@ var app = (function () {
     	return block;
     }
 
+    function formatTime(secs) {
+    	var minutes = Math.floor(secs / 60) || 0;
+    	var seconds = secs - minutes * 60 || 0;
+    	return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    }
+
     function instance$1($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Player", slots, []);
@@ -646,17 +736,43 @@ var app = (function () {
     	const { Howl, Howler } = require("howler");
 
     	// From Electron
-    	let src;
+    	let current = 0;
 
+    	let src;
     	let songSrc = [];
 
-    	// ipcRenderer.on('src', (e,data) =>{
-    	//     setSrc(data)
-    	//   })
     	function clickedSrc(e) {
     		e.preventDefault();
+    		let volume = document.getElementById("volume");
     		let getHref = e.currentTarget.getAttribute("href");
-    		let sound = new Howl({ src: [getHref], volume: 1 });
+    		let progress = document.getElementById("progress");
+    		let duration = document.getElementById("duration");
+    		let running = document.getElementById("test");
+
+    		volume.addEventListener("change", e => {
+    			let floatVolume = parseFloat(e.target.value);
+    			Howler.volume(floatVolume);
+    		});
+
+    		function step() {
+    			let seek = sound.seek() || 0;
+    			let time = seek / sound.duration() * 100 || 0;
+    			progress.value = time.toFixed(0);
+    			running.innerHTML = `${time.toFixed(2)}  /`;
+
+    			if (sound.playing()) {
+    				requestAnimationFrame(step);
+    			}
+    		}
+
+    		let sound = new Howl({
+    				src: [getHref],
+    				onplay() {
+    					requestAnimationFrame(step);
+    					duration.innerHTML = `${formatTime(Math.round(sound.duration()))}`;
+    				}
+    			});
+
     		sound.play();
     		setSrc(getHref);
     	}
@@ -676,7 +792,7 @@ var app = (function () {
     	});
 
     	function srcPaths(path) {
-    		$$invalidate(0, songSrc = path);
+    		$$invalidate(1, songSrc = path);
     	}
 
     	// Svelte
@@ -690,12 +806,16 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Player> was created with unknown prop '${key}'`);
     	});
 
+    	const change_handler = e => $$invalidate(0, current = parseFloat(e.target.value) * 100);
+
     	$$self.$capture_state = () => ({
     		ipcRenderer,
     		Howl,
     		Howler,
+    		current,
     		src,
     		songSrc,
+    		formatTime,
     		clickedSrc,
     		setSrc,
     		test,
@@ -704,15 +824,16 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
+    		if ("current" in $$props) $$invalidate(0, current = $$props.current);
     		if ("src" in $$props) src = $$props.src;
-    		if ("songSrc" in $$props) $$invalidate(0, songSrc = $$props.songSrc);
+    		if ("songSrc" in $$props) $$invalidate(1, songSrc = $$props.songSrc);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [songSrc, clickedSrc, test, openDialog];
+    	return [current, songSrc, clickedSrc, test, openDialog, change_handler];
     }
 
     class Player extends SvelteComponentDev {

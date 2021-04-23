@@ -1,8 +1,49 @@
-html, body {margin: 0; height: 100%; overflow: hidden}
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background-image: url('../public/media/background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+.button{
+  background-color: transparent !important;
+  border-color:transparent;
+  color: #a53838;
+}
 
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+ }
 .sticky{
     position: sticky;
     top: 0px;  /* 0px if you don't have a navbar, but something is required */
-    background: white;
+    /* background-color: rgba(20, 19, 19, 0.788);
+    backdrop-filter: blur(20px) ;
+    border: 0px solid;
+    box-shadow: 0 0 10px rgb(20, 19, 19); */
   }
+
+  .table th{
+    background-color: rgb(20, 19, 19) !important;
+    border: 1px solid rgb(20, 19, 19);
+  }
+
+  .table tr{
+    border: 1px solid rgb(20, 19, 19);
+    background-color: rgb(20, 19, 19) !important;
+  }
+
+
+  .border{
+    backdrop-filter: blur(20px);
+    border: 0px solid ;
+    box-shadow: 0 0 10px rgb(20, 19, 19);
+  }
+
+ 
