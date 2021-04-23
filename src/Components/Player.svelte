@@ -5,6 +5,7 @@
 
 // From Electron
 let current = 10
+let value = 0.1
 let src = ''
 let songSrc = []
 let playingSong = true
@@ -97,7 +98,7 @@ function toggleSong(e){
         let volume = document.getElementById("volume")
         let progress = document.getElementById('progress');
         let duration = document.getElementById('duration');
-        let running = document.getElementById('test');
+        let running = document.getElementById('running');
         Howler.volume(0.1)
         
 
@@ -110,8 +111,9 @@ function toggleSong(e){
         function step() {
         let seek = sound.seek() || 0;
         let time = (((seek / sound.duration()) * 100) || 0);
+        
         progress.value = time.toFixed(0)
-        running.innerHTML = `${time.toFixed(2)}  /`
+        running.innerHTML = `${formatTime(Math.round(seek))}  /`
           
           if (sound.playing()) {
               requestAnimationFrame(step);
@@ -148,6 +150,9 @@ function toggleSong(e){
 
 function stopSong(){
   Howler.stop()
+  current = 10
+  value = 0.1
+  playingSong = true
 }
 
 </script>
@@ -155,12 +160,11 @@ function stopSong(){
 
 
 
-<section  class="section is-flex-direction-column " style="height: 100%; width:100%;">
-  <div style="max-height: 200px; max-width:100% ;overflow-y: scroll;">
-    <table class="table is-fullwidth is-align-content-center is-justify-content-center border" style="height:300px;width:100%;">
+<section  class="section is-flex-direction-column" style="height: 100%; width:100%;">
+  <div style="max-height: 300px; min-height: 300px; max-width:100% ;overflow-y: scroll;">
+    <table class="table is-fullwidth is-align-content-center is-justify-content-center border">
       <thead>
         <tr>
-          <!-- <th class="sticky">Artist</th> -->
           <th class="sticky has-text-white">Song</th>
         </tr>
       </thead>
@@ -168,36 +172,39 @@ function stopSong(){
         {#if songSrc !== []}
           {#each songSrc as source}
               <tr>
-                  <!-- <th>Seether</th> -->
                   <td><a href="{source}" on:click="{srcLink}" title="">{source}</a>
               </tr>
-      
             {/each}
         {/if}
       </tbody>
     </table>
     </div>
-    <div>
+    <div class=" border mt-2">
       
-      <div class=" border buttons is-align-content-center mt-2  "style="height: 100%; width:100%;" id="player">
-        <button class="button" on:click="{openDialog}">OPEN</button>
+      <div class="buttons is-align-content-center is-justify-content-center is-justify-content-space-evenly mt-2" id="player">
+        <button class="button" on:click="{openDialog}"><i class="fas fa-folder-plus fa-2x"></i></button>
         <button class="button" on:click="{toggleSong}">
           {#if playingSong}<i class="fas fa-play fa-2x"></i>{/if}
           {#if !playingSong}<i class="fas fa-pause fa-2x"></i>{/if}
         </button>
         <button class="button" on:click="{stopSong}"><i class="fas fa-stop fa-2x"></i></button>
-        <button class="button" on:click="">TEST</button>
+        <!-- <button class="button" on:click="">TEST</button> -->
         <div style="height:20%; width:30%">
-          <span class="has-text-white mr-1" id="test"></span>
+          <span class="has-text-white mr-1" id="running"></span>
           <span class="has-text-white" id="duration"></span>
         </div>
        
         <progress id="progress" class="progress is-danger" value="" max="100"></progress>
-        
+        {#if current < 40}
+        <i class="ml-2 fas fa-volume-down fa-2x"><label for="text"  class="has-text-white ml-2">{current}</label></i>
+        {/if}
+        {#if current >= 40}
         <i class="ml-2 fas fa-volume-up fa-2x"><label for="text"  class="has-text-white ml-2">{current}</label></i>
+        {/if}
+       
         
         
-        <input id="volume" class="slider is-fullwidth is-medium is-danger is-circle" step="0.1" min="0" max="1" value="0.1" type="range" on:change={(e)=> current= parseFloat(e.target.value) * 100} Precision= "2">
+        <input id="volume" class="slider is-fullwidth is-medium is-danger is-circle" step="0.1" min="0" max="1" value="{value}" type="range" on:change={(e)=> {value= e.target.value;current= parseFloat(e.target.value) * 100}} Precision= "2">
         
       </div>
         

@@ -1,12 +1,14 @@
 html, body {
   margin: 0;
   height: 100%;
+  background-color: rgb(20, 19, 19);
   overflow: hidden;
-  background-image: url('../public/media/background.jpg');
+  /* background-image: url('../public/media/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
+
 
 ::-webkit-scrollbar {
   width: 14px;
@@ -16,7 +18,7 @@ html, body {
 ::-webkit-scrollbar-thumb {
   background-color: red;    /* color of the scroll thumb */
   /* border-radius: 20px;       roundness of the scroll thumb */
-  border: 100px solid rgb(20, 19, 19);
+  border: 4px solid rgb(20, 19, 19);
 }
 
 .button{
@@ -33,20 +35,21 @@ a:hover {
  }
 .sticky{
     position: sticky;
-    top: 0px;  /* 0px if you don't have a navbar, but something is required */
+    top: -1px;  /* 0px if you don't have a navbar, but something is required */
     /* background-color: rgba(20, 19, 19, 0.788);
     backdrop-filter: blur(20px) ;
     border: 0px solid;
     box-shadow: 0 0 10px rgb(20, 19, 19); */
   }
 
-  .table th{
+
+  .table td, .table th {
     background-color: rgb(20, 19, 19) !important;
-    border: 1px solid rgb(20, 19, 19);
+    border: 1px solid rgb(20, 19, 19) !important;
   }
 
   .table tr{
-    border: 1px solid rgb(20, 19, 19);
+    border: 1px solid rgb(20, 19, 19) !important;
     background-color: rgb(20, 19, 19) !important;
   }
 
